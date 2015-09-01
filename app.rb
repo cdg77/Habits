@@ -24,15 +24,19 @@ get '/habit_form' do
   erb :habit_form
 end
 
-post '/habits/new/create' do
-  habit_name = params.fetch('habit_name')
+post '/new_user' do
+  name = params.fetch('name')
   age = params.fetch('age')
-  city_name = params.fetch('city_name')
+  location = params.fetch('location')
   email = params.fetch('email')
-  phone_number = params.fetch('phone_number')
+  phone = params.fetch('phone')
   contact = params.fetch('contact')
-  @habit = Habit.create({:name => habit_name, age: age, city_name: city_name, email: email, phone_number: phone_number, contact: contact})
+  @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
 
-  erb :habits
+  erb :user
 
   end
+
+post '/new_user' do
+  "Hello World"
+end

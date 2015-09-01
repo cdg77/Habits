@@ -25,7 +25,7 @@ describe '/', {:type => :feature} do
     fill_in 'age', :with => "10"
     fill_in 'location', :with => "Portland"
     fill_in 'email', :with => "smoker@chmorris.com"
-    fill_in 'phone_number', :with => "555-555-5555"
+    fill_in 'phone', :with => "555-555-5555"
     select 'Yes', :from => 'contact'
     click_button 'CreateUser'
     expect(page).to have_content ('')
