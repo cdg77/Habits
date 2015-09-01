@@ -1,0 +1,13 @@
+<h1>Here are a list of habits</h1>
+
+<!-- list of habits that has a subset of users who are apart of that habit/links to forum/resources -->
+
+
+<!-- Have a few pre-written habits in the database to test if our search query is accurately scanning the habit database
+    Ideally the reason for this is to link users who want to form the same habit all have a place to go-->
+    
+<h2><% @habits.each do |habit| %> </h2>
+
+  <ul>
+    <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>
+  </ul>
