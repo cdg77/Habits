@@ -1,0 +1,25 @@
+body {
+  background-image: url("/img/success.jpg");
+  background-color: red;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.ghandi{
+  color: white;
+}
+
+.navbar-nav{
+  background-color: black;
+}
+
+.buttons-home{
+
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, 0);
+
+}
