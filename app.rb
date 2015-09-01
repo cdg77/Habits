@@ -33,10 +33,6 @@ post '/new_user' do
   contact = params.fetch('contact')
   @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
 
-  erb :user
+  erb :user_detail
 
-  end
-
-post '/new_user' do
-  "Hello World"
 end
