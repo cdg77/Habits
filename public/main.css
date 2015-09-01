@@ -1,0 +1,17 @@
+body {
+  background-image: url("/img/success.jpg");
+  background-color: red;
+}
+
+.ghandi{
+  color: red;
+}
+
+.buttons-home{
+  
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, 0);
+
+}
