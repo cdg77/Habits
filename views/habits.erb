@@ -5,9 +5,10 @@
 
 <!-- Have a few pre-written habits in the database to test if our search query is accurately scanning the habit database
     Ideally the reason for this is to link users who want to form the same habit all have a place to go-->
-    
+
 <h2><% @habits.each do |habit| %> </h2>
 
   <ul>
     <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>
+    <!-- add user total to end of link. call number of instances of habit id in join table. -->
   </ul>
