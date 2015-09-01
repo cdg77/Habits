@@ -1,0 +1,28 @@
+<h1>Welcome to the <%= @habit.name() %> page</h1>
+
+<div class="col-md-8">
+
+<h2>Message Board</h2>
+</div>
+
+<div class="col-md-4">
+
+<h3>Users</h3>
+
+
+<% @habit.users.each do |user| %>
+
+<ul>
+<li> <a href="/user/<%= user.id %>"><%= user.name %></li>
+</ul>
+<% end %>
+
+</div>
+
+<h2>Relevant Articles</h2>
+
+<form id="form_id" action="" method="post">
+<label for="article">Add Relevant article for <%= @habit.name() %></label>
+<input type="text" name="article">
+<button name="submit">Add Article</button>
+</form>
