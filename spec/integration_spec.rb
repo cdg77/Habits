@@ -3,6 +3,7 @@ require 'capybara/rspec'
 require './app'
 
 describe '/', {:type => :feature} do
+
   it 'loads the index page' do
     visit '/'
     expect(page).to have_content("Habits.com “Your beliefs become your thoughts, Your thoughts become your words, Your words become your actions, Your actions become your habits, Your habits become your values, Your values become your destiny.” Form A Habit Add A User")
@@ -19,6 +20,7 @@ describe '/', {:type => :feature} do
     click_link 'Add A User'
     expect(page).to have_content ('Create A New User')
   end
+
   it 'creates a new user' do
     visit '/user_add'
     fill_in 'name', :with => "Smokey"
@@ -28,7 +30,15 @@ describe '/', {:type => :feature} do
     fill_in 'phone', :with => "555-555-5555"
     select 'Yes', :from => 'contact'
     click_button 'CreateUser'
-    expect(page).to have_content ('')
+    expect(page).to have_content ('Smokey')
+  end
 
+  it 'creates a new habit' do
+    visit '/habit_form'
+    select 'Create', :from => "form"
+    fill_in 'name', :with => "running"
+
+    click_button 'Add Habit'
+    expect(page).to have_content ("running")
   end
 end

@@ -14,14 +14,14 @@ get '/form_habits' do
   erb :habit_form
 end
 
-get '/user_add' do
-
-  erb :user_add
-end
-
 get '/habit_form' do
 
   erb :habit_form
+end
+
+get '/user_add' do
+
+  erb :user_add
 end
 
 post '/new_user' do
@@ -34,5 +34,12 @@ post '/new_user' do
   @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
 
   erb :user_detail
+end
 
+post '/habit_form' do
+  form = params.fetch('form')
+  name = params.fetch('name')
+  @habit = Habit.create({:name => name, form: form})
+
+  erb :habit_detail
 end
