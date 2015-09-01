@@ -1,29 +1,17 @@
 <h1>Create A New Habit</h1>
 
 <form id="form_id" action="/habits/new/create" method="post">
-<label for="habit_name">What Habit Would You Like To Create</label>
+<label for="habit">Create or Break habit</label>
+<select id="habit" name="name">
+  <option value=true>Create</option>
+  <option value=false>Break</option>
+</select>
+
+<label for="habit_name">Habit name:</label>
 <input type="text" name="habit_name" value="post">
 <br>
-<label for="age">Age:</label>
-<input type="text" name="age" value="post">
 <br>
-<label for="city_name">City:</label>
-<input type="text" name="city_name" value="post">
-<br>
-<label for="state_name">State:</label>
-<input type="text" name="state_name" value="post">
-<br>
-<label for="email">E-mail:</label>
-<input type="text" name="email" value="post">
-<br>
-<label for="phone_number">Phone Number:</label>
-<input type="text" name="age" value="post">
-<br>
-<label for="contact">Publish Contact Info?</label>
-<select id="contact" name="contact">
-  <option value=true>Yes</option>
-  <option value=false>No</option>
-</select>
 <button name="submit">Add Habit</button>
+
 
 </form>
