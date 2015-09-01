@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: habit_database_dev
+
+test:
+  adapter: postgresql
+  database: habit_database_test
