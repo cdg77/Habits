@@ -1,0 +1,27 @@
+<div class="col-md-4">
+
+<!-- This is where the photo of the user will go -->
+
+</div>
+
+<div class="col-md-8">
+  <h2><%= @user.name %></h2>
+  <br>
+  <h3><%= @user.age %></h3>
+  <br>
+  <h3><%= @user.location %></h3>
+  <br>
+  <% if @user.contact %>
+    <h3><%= @user.email %></h3>
+      <br>
+    <h3><%= @user.phone %></h3>
+  <% end %>
+
+  <h2> <%= @user.name %>'s Habits </h2>
+
+  <% @user.habits.each do |habit| %>
+    <ol>
+    <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>  
+    </ol>
+  <% end %>
+</div>
