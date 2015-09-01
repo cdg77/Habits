@@ -1,5 +1,3 @@
 class User < ActiveRecord::Base
-has_many_through(:habits)
-
-
+  has_many :habits, through: :milestones
 end

@@ -1,5 +1,5 @@
 require('spec_helper')
 
 describe(Habit) do
-  it { should have_and_belong_to_many(:users) }
+  it {have_many :users, through: :milestones }
 end
