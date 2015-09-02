@@ -1,19 +1,32 @@
+<div class="container">
+
 <h1>Create A New Habit</h1>
 
-<form id="form_id" action="/habits/new" method="post">
+<form id="form_id" class ="form-horizontal" action="/habits/new" method="post">
+  <fieldset>
+      <legend>Create A New Habit</legend>
 
-<label for="habit">Create or Break habit</label>
-<select id="habit" name="form">
-  <option value=true>Create</option>
-  <option value=false>Break</option>
-</select>
+      <div class="form-group">
+        <label for="habit" class="col-lg-2 control-label">Create or Break habit</label>
+        <div class="col-lg-10">
+          <select id="habit" class="text-success" name="form">
+            <option value=true>Create</option>
+            <option value=false>Break</option>
+          </select>
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label for="habit_name" class="col-lg-2 control-label">Habit name:</label>
+        <div class="col-lg-10">
+          <input type="text" name="habit_name">
+        </div>
+      </div>
+        <br>
 
-<label for="habit_name">Habit name:</label>
-<input type="text" name="habit_name">
-<br>
+        <button name="submit" class="btn btn-success">Add Habit</button>
 
-<button name="submit">Add Habit</button>
-
+ </fieldset>
 
 </form>
+</div>
