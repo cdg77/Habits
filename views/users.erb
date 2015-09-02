@@ -9,7 +9,7 @@ Ideally the reason for this is to link users who want to form the same habit all
 <h2><% @users.each do |user| %> </h2>
 
 <ul>
-  <li><a href="/users/<%= user.id %>"><%= user.name %></a></li>
+  <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
   <!-- add user total to end of link. call number of instances of habit id in join table. -->
 </ul>
 

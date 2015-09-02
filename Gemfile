@@ -4,6 +4,7 @@ gem 'sinatra-contrib',  :require => 'sinatra/reloader'
 gem 'sinatra-activerecord'
 gem 'pg'
 gem 'rake'
+gem "paperclip"
 
 group :test do
   gem 'rspec'

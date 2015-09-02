@@ -32,3 +32,9 @@
   <li>  <a href="<%= @habit.article %>"><%= @habit.article %></a></li>
 
 </ul>
+
+<form action="/habits/<%= @habit.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" id="habit_id" name="habit" value="<%= @habit.id %>">
+  <button class="btn btn-danger btn-sm" type="submit">Delete Habitat for da animals</button>
+</form>
