@@ -21,12 +21,11 @@
   <% end %>
 
   <h2> <%= @user.name %>'s Habits </h2>
-
-  <% @user.habits.each do |habit| %>
-    <ol>
+  <ol>
+    <% @user.habits.each do |habit| %>
     <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>
-    </ol>
   <% end %>
+  </ol>
 </div>
     <form action="/users/<%= @user.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
