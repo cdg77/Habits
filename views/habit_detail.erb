@@ -53,19 +53,9 @@
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" id="habit_id" name="habit" value="<%= @habit.id %>">
 
-  <button class="btn btn-danger btn-sm" type="submit">Delete Habitat for da animals</button>
-  </form>
+<button class="btn btn-danger btn-sm" type="submit">Delete Habit</button>
 </div>
-
-  <button class="btn btn-danger btn-sm" type="submit">Delete Habit</button>
 </form>
-
-<form action="/habits/<%= @habit.id %>/update" method="post"></a>
-  <input type="hidden" name="_method" value="patch">
-  <input type="text" name="habit_name">
-  <button name="submit">Update User</button>
-</form>
-
 
   <form id="add_user" action="/habits/<%= @habit.id %>/users/new" method="post">
     <label for="user_list">Add a User</label>
