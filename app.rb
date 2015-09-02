@@ -1,5 +1,6 @@
 require("bundler/setup")
 Bundler.require(:default)
+require 'pry'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
@@ -36,10 +37,37 @@ post '/new_user' do
   erb :user_detail
 end
 
-post '/habit_form' do
+post '/habits/new' do
   form = params.fetch('form')
-  name = params.fetch('name')
+  name = params.fetch('habit_name')
   @habit = Habit.create({:name => name, form: form})
+  @habits = Habit.all
+  erb :habits
+end
 
+get '/habits/:id' do
+  id = params.fetch('id').to_i
+  @habit = Habit.find(id)
   erb :habit_detail
+
+end
+
+post '/habits/:id/' do
+  #cant find id.
+  # id = params.fetch('id')
+  @habit = Habit.find(id)
+  name = params.fetch('habit_name', @habit.name)
+  article = params.fetch('article', @habit.article)
+  erb :habit_detail
+end
+
+patch '/habits/:id/update' do
+  id = params.fetch('id')
+  binding.pry
+  @habit = Habit.find(id)
+  name = params.fetch('habit_name', @habit.name)
+  article = params.fetch('article', @habit.article)
+  @habit.update({name: name, article: article})
+  redirect "/habits/#{@habit.id}"
+
 end
