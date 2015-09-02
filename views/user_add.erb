@@ -1,25 +1,61 @@
-<h1>Create A New User</h1>
 
-<form id="form_id" action="/new_user" method="post">
-<label for="name">New User:</label>
-<input type="text" name="name">
-<br>
-<label for="age">Age:</label>
-<input type="text" name="age">
-<br>
-<label for="location">Location:</label>
-<input type="text" name="location">
-<br>
-<label for="email">E-mail:</label>
-<input type="text" name="email">
-<br>
-<label for="phone">Phone Number:</label>
-<input type="text" name="phone">
-<br>
-<label for="contact">Publish Contact Info?</label>
-<select id="contact" name="contact">
-  <option value=true>Yes</option>
-  <option value=false>No</option>
-</select>
-<button name="submit">CreateUser</button>
-</form>
+<div class="container">
+
+  <h1>Welcome</h1>
+  <form class='form-horizontal' id="form_id" action="/new_user" method="post">
+  <fieldset>
+    <legend>Create A New User</legend>
+
+    <div class="form-group">
+      <label for="name" class="col-lg-2 control-label">New User:</label>
+      <div class='col-lg-10'>
+      <input type="text" class="form_control" name="name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age" class="col-lg-2 control-label">Age:</label>
+      <div class='col-lg-10'>
+      <input type="text" class="form_control" name="age">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="location" class="col-lg-2 control-label">Location:</label>
+      <div class='col-lg-10'>
+      <input type="text" class="form_control" name="location">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="col-lg-2 control-label">E-mail:</label>
+      <div class='col-lg-10'>
+      <input type="text" class="form_control" name="email">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone" class="col-lg-2 control-label">Phone Number:</label>
+      <div class='col-lg-10'>
+      <input type="text" class="form_control" name="phone">
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="contact" class="col-lg-2 control-label">Publish Contact Info?</label>
+        <div class='col-lg-10'>
+        <select id="contact" class="text-success" name="contact">
+          </div>
+
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+    </div>
+    <div class="container col-lg-2">
+      <br>
+    <button type="submit" class="btn btn-success">Create User</button>
+    </div>
+  </fieldset>
+  </form>
+
+</div>
