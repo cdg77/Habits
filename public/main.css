@@ -7,19 +7,18 @@ body {
   background-size: cover;
 }
 
-.ghandi{
+.quote{
   color: white;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.navbar-nav{
-  background-color: black;
+
+.travis .navbar-brand{
+  background-color: #536E8D;
+  color: yellow;
 }
 
-.buttons-home{
-
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  transform: translate(-50%, 0);
-
+.travis {
+  background-color:#536E8D;
 }
