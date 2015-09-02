@@ -9,6 +9,9 @@ get '/' do
   erb :index
 end
 
+
+##### HABITS #####
+
 get '/form_habits' do
   @habits = Habit.all()
 
@@ -18,23 +21,6 @@ end
 get '/habit_form' do
 
   erb :habit_form
-end
-
-get '/user_add' do
-
-  erb :user_add
-end
-
-post '/new_user' do
-  name = params.fetch('name')
-  age = params.fetch('age')
-  location = params.fetch('location')
-  email = params.fetch('email')
-  phone = params.fetch('phone')
-  contact = params.fetch('contact')
-  @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
-
-  erb :user_detail
 end
 
 post '/habits/new' do
@@ -53,8 +39,6 @@ get '/habits/:id' do
 end
 
 post '/habits/:id/' do
-  #cant find id.
-  # id = params.fetch('id')
   @habit = Habit.find(id)
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
@@ -63,11 +47,37 @@ end
 
 patch '/habits/:id/update' do
   id = params.fetch('id')
-  binding.pry
   @habit = Habit.find(id)
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
   @habit.update({name: name, article: article})
   redirect "/habits/#{@habit.id}"
 
+end
+
+
+
+##### USERS #####
+
+get '/users' do
+  @users = User.all
+  erb :users
+end
+
+
+get '/user_add' do
+  erb :user_add
+end
+
+
+post '/new_user' do
+  name = params.fetch('name')
+  age = params.fetch('age')
+  location = params.fetch('location')
+  email = params.fetch('email')
+  phone = params.fetch('phone')
+  contact = params.fetch('contact')
+  @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
+
+  erb :user_detail
 end
