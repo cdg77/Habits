@@ -4,5 +4,6 @@ class AddMessageboardTable < ActiveRecord::Migration
       t.column(:message, :string)
       t.column(:habit_id, :integer)
       t.timestamps()
+    end
   end
 end
