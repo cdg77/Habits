@@ -18,6 +18,23 @@ body {
 
 }
 
+ul{
+  list-style-type: none;
+}
+
+#heading{
+  text-decoration: underline;
+}
+
+.textual li{
+  font-size: 200%
+}
+
+.article-container{
+  float: left;
+}
+
+
 
 .travis .navbar-brand{
   background-color: #536E8D;

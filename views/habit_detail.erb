@@ -1,40 +1,44 @@
 <h1>Welcome to the <%= @habit.name() %> page</h1>
 
-<div class="col-md-8">
-
-<h2>Message Board</h2>
-</div>
-
+  <div class="col-md-8">
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Message Board</h2>
+      </div>
+    </div>
+  </div>
 <div class="col-md-4">
+  <div class="well">
+    <h3>Users</h3>
 
-<h3>Users</h3>
 
+    <% @habit.users.each do |user| %>
 
-<% @habit.users.each do |user| %>
-
-<ul>
-<li> <a href="/user/<%= user.id %>"><%= user.name %></li>
-</ul>
-<% end %>
-
+    <ul>
+    <li> <a href="/user/<%= user.id %>"><%= user.name %></li>
+    </ul>
+    <% end %>
+  </div>
 </div>
 
-<h2>Relevant Articles</h2>
+<div class="col-md-12">
+  <h2>Relevant Articles</h2>
 
-<form id="form_id" action="/habits/<%= @habit.id %>/update" method="post">
+  <form id="form_id" action="/habits/<%= @habit.id %>/update" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="article">Add Relevant article for <%= @habit.name() %></label>
     <input type="text" name="article">
   <button name="submit">Add Article</button>
-</form>
+  </form>
 
-<ul>
+  <ul>
   <li>  <a href="<%= @habit.article %>"><%= @habit.article %></a></li>
 
-</ul>
+  </ul>
 
-<form action="/habits/<%= @habit.id %>/delete" method="post">
+  <form action="/habits/<%= @habit.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" id="habit_id" name="habit" value="<%= @habit.id %>">
   <button class="btn btn-danger btn-sm" type="submit">Delete Habitat for da animals</button>
-</form>
+  </form>
+</div>
