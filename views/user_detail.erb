@@ -33,3 +33,9 @@
       <input type="hidden" id="user_id" name="user" value="<%= @user.id %>">
       <button class="btn btn-danger btn-sm" type="submit">Delete User</button>
     </form>
+
+  <form action="/users/<%= @user.id %>/update" method="post"></a>
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="name">
+    <button name="submit">Update User</button>
+  </form>

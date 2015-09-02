@@ -44,6 +44,7 @@ end
 get '/habits/:id' do
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
+  @users = User.all()
   erb :habit_detail
 
 end
@@ -53,6 +54,19 @@ post '/habits/:id/' do
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
   erb :habit_detail
+end
+
+post '/habits/:id/users/new' do
+  #need to get band id
+  habit_id = params.fetch('id').to_i
+  user_id = params.fetch('user_id').to_i
+  habit = Habit.find(habit_id)
+  user = User.find(user_id)
+  habit.users.push(user)
+  @habits = Habit.all
+  @users = User.all()
+  erb :habits
+
 end
 
 patch '/habits/:id/update' do
@@ -113,6 +127,7 @@ post '/new_user' do
   erb :user_detail
 end
 
+
 patch '/users/:id/update' do
   id = params.fetch('id')
   @user = User.find(id)
@@ -123,7 +138,7 @@ patch '/users/:id/update' do
   phone = params.fetch('phone', @user.phone)
   contact = params.fetch('contact', @user.contact)
   @user.update({name: name, age: age, location: location, email: email, phone: phone, contact: contact})
-  redirect "/users/#{@user.id}"
+  redirect "/user/#{@user.id}"
 end
 
 delete '/users/:id/delete' do
