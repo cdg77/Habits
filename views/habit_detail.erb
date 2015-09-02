@@ -21,8 +21,14 @@
 
 <h2>Relevant Articles</h2>
 
-<form id="form_id" action="" method="post">
-<label for="article">Add Relevant article for <%= @habit.name() %></label>
-<input type="text" name="article">
-<button name="submit">Add Article</button>
+<form id="form_id" action="/habits/<%= @habit.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="article">Add Relevant article for <%= @habit.name() %></label>
+    <input type="text" name="article">
+  <button name="submit">Add Article</button>
 </form>
+
+<ul>
+  <li>  <a href="<%= @habit.article %>"><%= @habit.article %></a></li>
+
+</ul>
