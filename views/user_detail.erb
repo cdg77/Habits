@@ -42,7 +42,7 @@
 
 
 <form id="add_habit" action="/users/<%= @user.id %>/habits/new" method="post">
-  <label for="habit_list">Add a User</label>
+  <label for="habit_list">Add a Habit</label>
   <select id="habit_id" name="habit_id">
     <% @habits.each do |habit| %>
     <option value='<%= habit.id %>'><%= habit.name %></option>
