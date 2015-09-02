@@ -48,3 +48,10 @@ textarea{
 .travis {
   background-color:#536E8D;
 }
+
+.quote-display p {
+  font-size: 20px;
+  text-align: center;
+  width: 80%;
+  color: #000000;
+}
