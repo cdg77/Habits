@@ -126,7 +126,7 @@ post '/users/:id/habits/new' do
   habit.users.push(user)
   @habits = Habit.all
   @users = User.all()
-  erb :habits
+  redirect "/users/#{@user.id}"
 
 end
 
@@ -141,6 +141,7 @@ post '/new_user' do
   @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
   if @user.save
     @users = User.all
+    @habits = Habit.all
     erb :user_detail
   else
     erb :user_validation_fail
