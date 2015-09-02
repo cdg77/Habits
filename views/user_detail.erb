@@ -3,6 +3,9 @@
 <!-- This is where the photo of the user will go -->
 
 </div>
+<% knowledge = ['Eat your breakfast', 'Brush those teeth', 'Pet the animals', 'Watch birds', 'Drop knowledge', 'Rollerskate witcha homies'] %>
+<% knowledgedisplay = knowledge.sample %>
+<%= knowledgedisplay %>
 
 <div class="col-md-8">
   <h2><%= @user.name %></h2>
@@ -25,3 +28,8 @@
     </ol>
   <% end %>
 </div>
+    <form action="/users/<%= @user.id %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" id="user_id" name="user" value="<%= @user.id %>">
+      <button class="btn btn-danger btn-sm" type="submit">Delete User</button>
+    </form>
