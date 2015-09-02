@@ -37,13 +37,18 @@ post '/habits/new' do
   form = params.fetch('form')
   name = params.fetch('habit_name')
   @habit = Habit.create({:name => name, form: form})
-  @habits = Habit.all
-  erb :habits
+  if @habit.save
+    @habits = Habit.all
+    erb :habits
+  else
+    erb :habit_validation_fail
+  end
 end
 
 get '/habits/:id' do
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
+  @users = User.all()
   erb :habit_detail
 
 end
@@ -53,6 +58,18 @@ post '/habits/:id/' do
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
   erb :habit_detail
+end
+
+post '/habits/:id/users/new' do
+  habit_id = params.fetch('id').to_i
+  user_id = params.fetch('user_id').to_i
+  habit = Habit.find(habit_id)
+  user = User.find(user_id)
+  habit.users.push(user)
+  @habits = Habit.all
+  @users = User.all()
+  erb :habits
+
 end
 
 patch '/habits/:id/update' do
@@ -97,7 +114,20 @@ end
 get '/user/:id' do
   id = params.fetch('id')
   @user = User.find(id)
+  @habits = Habit.all
   erb :user_detail
+end
+
+post '/users/:id/habits/new' do
+  habit_id = params.fetch('id').to_i
+  user_id = params.fetch('user_id').to_i
+  habit = Habit.find(habit_id)
+  user = User.find(user_id)
+  habit.users.push(user)
+  @habits = Habit.all
+  @users = User.all()
+  erb :habits
+
 end
 
 
@@ -109,9 +139,14 @@ post '/new_user' do
   phone = params.fetch('phone')
   contact = params.fetch('contact')
   @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
-
-  erb :user_detail
+  if @user.save
+    @users = User.all
+    erb :user_detail
+  else
+    erb :user_validation_fail
+  end
 end
+
 
 patch '/users/:id/update' do
   id = params.fetch('id')
@@ -123,7 +158,7 @@ patch '/users/:id/update' do
   phone = params.fetch('phone', @user.phone)
   contact = params.fetch('contact', @user.contact)
   @user.update({name: name, age: age, location: location, email: email, phone: phone, contact: contact})
-  redirect "/users/#{@user.id}"
+  redirect "/user/#{@user.id}"
 end
 
 delete '/users/:id/delete' do

@@ -33,3 +33,20 @@
       <input type="hidden" id="user_id" name="user" value="<%= @user.id %>">
       <button class="btn btn-danger btn-sm" type="submit">Delete User</button>
     </form>
+
+  <form action="/users/<%= @user.id %>/update" method="post"></a>
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="name">
+    <button name="submit">Update User</button>
+  </form>
+
+
+<form id="add_habit" action="/users/<%= @user.id %>/habits/new" method="post">
+  <label for="habit_list">Add a User</label>
+  <select id="habit_id" name="habit_id">
+    <% @habits.each do |habit| %>
+    <option value='<%= habit.id %>'><%= habit.name %></option>
+    <% end %>
+  </select>
+  <button class='btn btn-success btn-sm' type='submit'>Submit</button>
+</form>
