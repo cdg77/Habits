@@ -12,6 +12,11 @@ end
 
 ##### HABITS #####
 
+get '/habits' do
+  @habits = Habit.all
+  erb :habits
+end
+
 get '/form_habits' do
   @habits = Habit.all()
 
@@ -56,6 +61,15 @@ patch '/habits/:id/update' do
 end
 
 
+delete '/habits/:id/delete' do
+  id = params.fetch('id')
+  habit = Habit.find(id)
+  habit.destroy
+  @habits = Habit.all
+  erb :habits
+
+end
+
 
 ##### USERS #####
 
@@ -80,4 +94,13 @@ post '/new_user' do
   @user = User.create({:name => name, age: age, location: location, email: email, phone: phone, contact: contact})
 
   erb :user_detail
+end
+
+
+delete '/users/:id/delete' do
+  id = params.fetch('id')
+  user = User.find('id')
+  user.destroy
+  @users = User.all()
+  erb :users
 end
