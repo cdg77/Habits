@@ -119,14 +119,14 @@ get '/user/:id' do
 end
 
 post '/users/:id/habits/new' do
-  habit_id = params.fetch('id').to_i
-  user_id = params.fetch('user_id').to_i
+  habit_id = params.fetch('habit_id').to_i
+  user_id = params.fetch('id').to_i
   habit = Habit.find(habit_id)
   user = User.find(user_id)
   habit.users.push(user)
   @habits = Habit.all
   @users = User.all()
-  redirect "/users/#{@user.id}"
+  redirect "/user/#{user.id}"
 
 end
 
