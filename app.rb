@@ -28,6 +28,11 @@ get '/habit_form' do
   erb :habit_form
 end
 
+get '/habits/new' do
+
+  erb :habit_form
+end
+
 post '/habits/new' do
   form = params.fetch('form')
   name = params.fetch('habit_name')
@@ -83,6 +88,18 @@ get '/user_add' do
   erb :user_add
 end
 
+get '/user/new' do
+
+  erb :user_add
+
+end
+
+get '/user/:id' do
+  id = params.fetch('id')
+  @user = User.find(id)
+  erb :user_detail
+end
+
 
 post '/new_user' do
   name = params.fetch('name')
@@ -96,10 +113,22 @@ post '/new_user' do
   erb :user_detail
 end
 
+patch '/users/:id/update' do
+  id = params.fetch('id')
+  @user = User.find(id)
+  name = params.fetch('name', @user.name)
+  age = params.fetch('age', @user.age)
+  location = params.fetch('location', @user.location)
+  email = params.fetch('email', @user.email)
+  phone = params.fetch('phone', @user.phone)
+  contact = params.fetch('contact', @user.contact)
+  @user.update({name: name, age: age, location: location, email: email, phone: phone, contact: contact})
+  redirect "/users/#{@user.id}"
+end
 
 delete '/users/:id/delete' do
   id = params.fetch('id')
-  user = User.find('id')
+  user = User.find(id)
   user.destroy
   @users = User.all()
   erb :users
