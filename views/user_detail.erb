@@ -13,45 +13,55 @@
 <p><%= knowledgedisplay %></p>
 </div>
 
-<div class="col-md-8">
-  <h2><%= @user.name %></h2>
-  <br>
-  <h3><%= @user.age %></h3>
-  <br>
-  <h3><%= @user.location %></h3>
-  <br>
-  <% if @user.contact %>
-    <h3><%= @user.email %></h3>
+<div class="col-md-5">
+      <h2><%= @user.name %></h2>
       <br>
-    <h3><%= @user.phone %></h3>
-  <% end %>
+      <h3><%= @user.age %></h3>
+      <br>
+      <h3><%= @user.location %></h3>
+      <br>
+      <% if @user.contact %>
+        <h3><%= @user.email %></h3>
+          <br>
+        <h3><%= @user.phone %></h3>
+      <% end %>
 
-  <h2> <%= @user.name %>'s Habits </h2>
-  <ol>
-    <% @user.habits.each do |habit| %>
-    <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>
-  <% end %>
-  </ol>
-</div>
+      <h2> <%= @user.name %>'s Habits </h2>
+      <ol>
+        <% @user.habits.each do |habit| %>
+        <li><a href="/habits/<%= habit.id %>"><%= habit.name %></a></li>
+      <% end %>
+      </ol>
+    </div>
+      <div class="calendar">
+        <div class="well">
+          <div class="container-fluid">
+            <div class="col-md-6">
+              <iframe src="https://www.google.com/calendar/embed?src=crampton.travis%40gmail.com&ctz=America/Los_Angeles" style="border: 0" width="460" height="300" frameborder="0" scrolling="no"></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+  <div class="col-md-12">
     <form action="/users/<%= @user.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" id="user_id" name="user" value="<%= @user.id %>">
       <button class="btn btn-danger btn-sm" type="submit">Delete User</button>
     </form>
 
-  <form action="/users/<%= @user.id %>/update" method="post"></a>
-    <input type="hidden" name="_method" value="patch">
-    <input type="text" name="name">
-    <button name="submit">Update User</button>
+    <form action="/users/<%= @user.id %>/update" method="post"></a>
+      <input type="hidden" name="_method" value="patch">
+      <input type="text" name="name">
+      <button name="submit" class= "btn btn-warning btn-sm">Update User</button>
+    </form>
+
+  <form id="add_habit" action="/users/<%= @user.id %>/habits/new" method="post">
+    <label for="habit_list">Add a Habit</label>
+    <select id="habit_id" name="habit_id" class="option-color">
+      <% @habits.each do |habit| %>
+      <option value='<%= habit.id %>'><%= habit.name %></option>
+      <% end %>
+    </select>
+    <button class='btn btn-success btn-sm' type='submit'>Submit</button>
+    </div>
   </form>
-
-
-<form id="add_habit" action="/users/<%= @user.id %>/habits/new" method="post">
-  <label for="habit_list">Add a Habit</label>
-  <select id="habit_id" name="habit_id">
-    <% @habits.each do |habit| %>
-    <option value='<%= habit.id %>'><%= habit.name %></option>
-    <% end %>
-  </select>
-  <button class='btn btn-success btn-sm' type='submit'>Submit</button>
-</form>
