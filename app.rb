@@ -123,8 +123,10 @@ get '/habits/:id' do
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
   @users = User.all()
-  @messageboards = Messageboard.all
-
+  @habits = Habit.all()
+  @messageboards = @habit.messageboards
+  # @messageboards = Messageboard.find_by(habit_id: id)
+  # binding.pry
   erb :habit_detail
 end
 
@@ -132,6 +134,11 @@ post '/habits/:id/' do
   @habit = Habit.find(id)
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
+  id = params.fetch('id').to_i
+  @habit = Habit.find(id)
+  @users = User.all()
+  @habits = Habit.all()
+  @messageboards = @habit.messageboards
   erb :habit_detail
 end
 
@@ -143,6 +150,9 @@ post '/habits/:id/users/new' do
   habit.users.push(user)
   @habits = Habit.all
   @users = User.all()
+  id = params.fetch('id').to_i
+  @habit = Habit.find(id)
+  @messageboards = @habit.messageboards
   redirect "/habits/#{habit.id}"
 
 end
@@ -153,6 +163,10 @@ patch '/habits/:id/update' do
   name = params.fetch('habit_name', @habit.name)
   article = params.fetch('article', @habit.article)
   @habit.update({name: name, article: article})
+  id = params.fetch('id').to_i
+  @users = User.all()
+  @habits = Habit.all()
+  @messageboards = @habit.messageboards
   redirect "/habits/#{@habit.id}"
 
 end
@@ -259,18 +273,23 @@ get '/habits/:id' do
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
   @users = User.all()
-
+  id = params.fetch('id').to_i
+  @habits = Habit.all()
+  @messageboards = @habit.messageboards
   erb :habit_detail
 
 end
 
 post '/messages/new' do
-  habit_id= params.fetch("id")
-  @habit = Habit.find(habit_id)
+  habit_id = params.fetch('habit_id').to_i
+  habit = Habit.find(habit_id)
   title = params.fetch('title')
   message = params.fetch('message')
   @message = Messageboard.create({:message => message, :title => title, :habit_id => habit_id})
   @messageboards = Messageboard.all()
+  @habit= habit.messageboards.push(@message)
+  @habits=Habit.all()
 
-  erb :habit_detail
+
+  erb :message
 end

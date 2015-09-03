@@ -5,18 +5,9 @@
       <div class="container">
         <h2>Message Board</h2>
         <div class = "well" id="messboard">
-          <h3>This is a test</h3>
-          <p>THis is the story of a girl who cried a river and drown the whole world, and while she looks so bad in photographs I absolutely love her, WHEN SHE SMILES!!!</p>
-        </div>
-
-
-          <!-- <% @messageboards.each do |habit_id| %>
-            <% posting = nil %>
-              <% if @messageboards.habit_id == habit_id %>
-                <% posting.push(@messageboards.message) %>
-                <% end %>
-                <%= posting %>
-                  <% end %> -->
+          <h3><% @messageboards.each do |message| %></h3>
+          <%= message.message %>
+          <% end %>
 
         <form id="form_id" action="/messages/new" method="post">
           <div class="form-group">
@@ -29,12 +20,14 @@
               <!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> -->
             </div>
           </div>
-        </form>
+
 
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
+              <input type="hidden" name="habit_id" value="<%= @habit.id %>">
               <button type="reset" class="btn btn-default">Cancel</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit"   class="btn btn-primary">Submit</button>
+            </form>
           </div>
         </div>
       </div>
@@ -54,20 +47,21 @@
 
 
 
-<div class="col-md-12">
+<div class="col-md-8">
+  <div class="jumbotron">
   <h2>Relevant Articles</h2>
-
-  <form id="form_id" action="/habits/<%= @habit.id %>/update" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <label for="article">Add Relevant article for <%= @habit.name() %></label>
-    <input type="text" name="article">
-  <button name="submit" class="btn btn-warning">Add Article</button>
-  </form>
-
   <ul>
   <li>  <a href="<%= @habit.article %>"><%= @habit.article %></a></li>
 
   </ul>
+
+  <form id="form_id" action="/habits/<%= @habit.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="article">Add an Article about <%= @habit.name() %></label>
+    <input type="text" name="article">
+  <button name="submit" class="btn btn-warning">Add Article</button>
+  </form>
+</div>
 
   <form action="/habits/<%= @habit.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
