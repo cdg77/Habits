@@ -13,9 +13,52 @@
     <br>
 
   <div class="buttons-home center-block text-center">
+    <% if session[:username] != nil %>
+      <a href="/form_habits" class="btn btn-lg btn-primary">Form A Habit</a>
+      <a href="/user_add" class="btn btn-lg btn-danger">Add A User</a>
+    <% else %>
+      <form  class='horizontal' id="signup" action="/signup" method="post">
+        <fieldset>
+            <legend>Sign Up Here</legend>
+            <!-- <label for="signup">Sign Up Here</label> -->
+          <div class="form-group">
+            <input type="text" name="name" placeholder="name">
+          </div>
+          <div class="form-group">
+            <input type="text" name="email" placeholder="email">
+          </div>
+          <div class="form-group">
+            <input type="text" name="age" placeholder="age">
+          </div>
+          <div class="form-group">
+            <input type="text" name="location" placeholder="location">
+          </div>
+          <div class="form-group">
+            <input type="text" name="phone" placeholder="phone">
+          </div>
+          <div class="form-group">
+            <label for="contact-yesno">show contact info</label>
+            <select id="contact" class="text-success" name="contact">
+              <option value=true>Yes</option>
+              <option value=false>No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" name="password" placeholder="password">
+          </div>
+          <div class="form-group">
+            <input type="text" name="password_confirmation" placeholder="password_confirmation">
+          </div>
+          <div class="form-group">
+            <button class='btn btn-primary' name="submit">Submit</button>
+          </div>
+          <div class="form-group">
+            <button class='btn btn-warning'name="logout">LOG OUT</button>
+            <button class='btn btn-info'name="login">LOG IN</button>
+          </div>
+        </fieldset>
+      </form>
+    <% end %>
 
-    <a href="/form_habits" class="btn btn-lg btn-primary">Form A Habit</a>
-
-    <a href="/user_add" class="btn btn-lg btn-danger">Add A User</a>
   </div>
 <!-- </div> -->
