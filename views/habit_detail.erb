@@ -4,20 +4,28 @@
     <div class="jumbotron">
       <div class="container">
         <h2>Message Board</h2>
-          <% @messageboards.each do |habit_id| %>
+        <div class = "well" id="messboard">
+          <h3>This is a test</h3>
+          <p>THis is the story of a girl who cried a river and drown the whole world, and while she looks so bad in photographs I absolutely love her, WHEN SHE SMILES!!!</p>
+        </div>
+
+
+          <!-- <% @messageboards.each do |habit_id| %>
             <% posting = nil %>
               <% if @messageboards.habit_id == habit_id %>
                 <% posting.push(@messageboards.message) %>
                 <% end %>
                 <%= posting %>
-                  <% end %>
+                  <% end %> -->
 
         <form id="form_id" action="/messages/new" method="post">
           <div class="form-group">
-            <label for="title" class="control-label">Name Of Post</label>
-            <input type="text" name="title">
             <div class="container-fluid">
-              <textarea class="form-control" rows="3" id="textArea" type="text" name="message"></textarea>
+            <label for="title"  class="control-label" ></label>
+            <input type="text" name="title" placeholder="Title of Post">
+              <br>
+              <br>
+              <textarea class="form-control" rows="3" id="textArea" type="text" name="message" placeholder="Message Board Post"></textarea>
               <!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> -->
             </div>
           </div>
@@ -34,7 +42,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class = 'well'>
+    <div class = "well">
       <h3>Users</h3>
         <% @habit.users.each do |user| %>
       <ul>

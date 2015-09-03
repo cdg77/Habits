@@ -1,14 +1,14 @@
 <div class="container">
 
-<h1>Create A New Habit</h1>
+<h1>Welcome</h1>
 
 <form id="form_id" class ="form-horizontal" action="/habits/new" method="post">
+    <div class="well">
   <fieldset>
       <legend>Create A New Habit</legend>
-
       <div class="form-group">
-        <label for="habit" class="col-lg-2 control-label">Create or Break habit</label>
-        <div class="col-lg-10">
+        <label for="habit" class="col-md-6 control-label">Create or Break habit</label>
+        <div class="col-md-6">
           <select id="habit" class="text-success" name="form">
             <option value=true>Create</option>
             <option value=false>Break</option>
@@ -17,14 +17,15 @@
       </div>
 
       <div class="form-group">
-        <label for="habit_name" class="col-lg-2 control-label">Habit name:</label>
-        <div class="col-lg-10">
+        <label for="habit_name" class="col-md-6 control-label">Habit name:</label>
+        <div class="col-md-6">
           <input type="text" name="habit_name">
         </div>
       </div>
-      <div class="container col-lg-2">
+      <div class="container col-md-4">
         <br>
         <button name="submit" class="btn btn-success">Add Habit</button>
+        </div>
       </div>
   </fieldset>
 </form>

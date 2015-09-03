@@ -1,19 +1,21 @@
 <div class="container text-center">
-<h1 id="heading" >Members</h1>
+  <div class="jumbotron">
+    <div class="container-fluid">
+    <legend><h1>Members</h1></legend>
 
-<!-- list of habits that has a subset of users who are apart of that habit/links to forum/resources -->
+    <!-- list of habits that has a subset of users who are apart of that habit/links to forum/resources -->
 
 
-<!-- Have a few pre-written habits in the database to test if our search query is accurately scanning the habit database
-Ideally the reason for this is to link users who want to form the same habit all have a place to go-->
-<div class="textual">
-<h2><% @users.each do |user| %> </h2>
-
-<ul>
-  <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
-  <!-- add user total to end of link. call number of instances of habit id in join table. -->
-</ul>
-
-<% end %>
-</div>
+    <!-- Have a few pre-written habits in the database to test if our search query is accurately scanning the habit database
+    Ideally the reason for this is to link users who want to form the same habit all have a place to go-->
+    <div class="textual">
+        <h2><% @users.each do |user| %> </h2>
+        <ul>
+          <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
+          <!-- add user total to end of link. call number of instances of habit id in join table. -->
+        </ul>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>
