@@ -16,6 +16,15 @@
     <% if session[:username] != nil %>
       <a href="/form_habits" class="btn btn-lg btn-primary">Form A Habit</a>
       <a href="/user_add" class="btn btn-lg btn-danger">Add A User</a>
+
+      <form  class='horizontal' id="logout" action="/logout" method="get">
+        <fieldset>
+          <div class="form-group">
+            <button class='btn btn-warning'name="logout">LOG OUT</button>
+          </div>
+        </fieldset>
+      </form>
+
     <% else %>
       <form  class='horizontal' id="signup" action="/signup" method="post">
         <fieldset>
