@@ -1,12 +1,83 @@
 require("bundler/setup")
 Bundler.require(:default)
+require 'sinatra/base'
 require 'pry'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
+
+#Session section for user login system
+#ActiveRecord::Base.establish_connection(ENV['postgres: //yhzvzhitpdddjb:OUoMXJ6gA-Zbt2mfhESmqYUZbb@ec2-54-163-227-94.compute-1.amazonaws.com:5432/df8du51q5u3j7t'])
+
+enable :sessions
+
+helpers do
+
+  def login?
+    if session[:username].nil?
+      return false
+    else
+      return true
+    end
+  end
+
+  def username
+    return session[:username]
+  end
+
+end
+
 get '/' do
   erb :index
+end
+
+
+##### Sessions #####
+
+post '/signup' do
+  @@user = nil
+  name = params.fetch('name')
+  email = params.fetch('email')
+  password = params.fetch('password')
+  age = params.fetch('age')
+  location = params.fetch('location')
+  phone = params.fetch('phone')
+  contact = params.fetch('contact')
+  password_confirmation = params.fetch('password_confirmation')
+  if password != password_confirmation
+    redirect '/signup_error'
+  end
+
+  @user = User.create({name: name, email: email, password: password, age: age, location: location, phone: phone, contact: contact})
+  if @user.save
+    redirect '/'
+  else
+    redirect '/signup_error'
+  end
+end
+
+
+post '/login' do
+  email = params.fetch('email')
+  password = params.fetch('password')
+  @user = nil
+  User.all.each do |user|
+    if user.email == email && user.password == password
+      @user = user
+    end
+  end
+  session[:username] = @user
+  if @user != nil
+    redirect("/user/#{@user.id}")
+  else
+    erb :signup_error
+  end
+end
+
+get '/logout' do
+  session[:username] = nil
+  redirect '/'
 end
 
 
@@ -113,6 +184,8 @@ get '/user/new' do
 end
 
 get '/user/:id' do
+  #session lines
+  session[:username]
   id = params.fetch('id')
   @user = User.find(id)
   @habits = Habit.all
