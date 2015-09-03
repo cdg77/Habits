@@ -49,6 +49,7 @@ get '/habits/:id' do
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
   @users = User.all()
+  @messageboards = Messageboard.all
   erb :habit_detail
 
 end
@@ -168,4 +169,25 @@ delete '/users/:id/delete' do
   user.destroy
   @users = User.all()
   erb :users
+end
+
+# Messages
+
+get '/habits/:id' do
+  id = params.fetch('id').to_i
+  @habit = Habit.find(id)
+  @users = User.all()
+
+  erb :habit_detail
+
+end
+
+post '/messages/new' do
+  habit_id= params.fetch("id")
+  @habit = Habit.find(habit_id)
+  message = params.fetch('message')
+  @message = Messageboard.create({:message => message, :habit_id => habit_id})
+  @messageboards = Messageboard.all()
+
+  erb :habit_detail
 end
