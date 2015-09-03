@@ -17,16 +17,35 @@ body {
 
 }
 
+.form-horizontal{
+  width: 40%;
+}
+
 ul{
   list-style-type: none;
 }
 
 textarea{
-  max-width:60%;
+  max-width:100%;
 }
 
 #heading{
   text-decoration: underline;
+}
+
+.jumbotron {
+  background: rgb(200, 54, 54); /* This is for ie8 and below */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.well {
+  background: rgb(200, 54, 54); /* This is for ie8 and below */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#messboard{
+  background: rgb(200, 54, 54); /* This is for ie8 and below */
+  background: rgba(83, 110, 141, 0.5);
 }
 
 .textual li{
