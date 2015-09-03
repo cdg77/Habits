@@ -51,7 +51,7 @@ post '/signup' do
 
   @user = User.create({name: name, email: email, password: password, age: age, location: location, phone: phone, contact: contact})
   if @user.save
-    redirect '/'
+    redirect "/users"
   else
     redirect '/signup_error'
   end
