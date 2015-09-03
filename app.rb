@@ -28,6 +28,8 @@ helpers do
 
 end
 
+
+
 get '/' do
   erb :index
 end
@@ -36,7 +38,6 @@ end
 ##### Sessions #####
 
 post '/signup' do
-  @@user = nil
   name = params.fetch('name')
   email = params.fetch('email')
   password = params.fetch('password')
@@ -61,15 +62,16 @@ end
 post '/login' do
   email = params.fetch('email')
   password = params.fetch('password')
-  @user = nil
+  @@current_user = nil
   User.all.each do |user|
     if user.email == email && user.password == password
       @user = user
+      @@current_user = @user
     end
   end
-  session[:username] = @user
-  if @user != nil
-    redirect("/user/#{@user.id}")
+  session[:username] = @@current_user
+  if @@current_user != nil
+    redirect("/user/#{@@current_user.id}")
   else
     erb :signup_error
   end
@@ -117,12 +119,13 @@ post '/habits/new' do
 end
 
 get '/habits/:id' do
+
   id = params.fetch('id').to_i
   @habit = Habit.find(id)
   @users = User.all()
   @messageboards = Messageboard.all
-  erb :habit_detail
 
+  erb :habit_detail
 end
 
 post '/habits/:id/' do
@@ -169,27 +172,32 @@ end
 
 get '/users' do
   @users = User.all
+
   erb :users
 end
 
 
 get '/user_add' do
+
   erb :user_add
 end
 
 get '/user/new' do
 
   erb :user_add
-
 end
 
 get '/user/:id' do
   #session lines
-  session[:username]
   id = params.fetch('id')
-  @user = User.find(id)
-  @habits = Habit.all
-  erb :user_detail
+
+  if @@current_user.id == id.to_i
+    @user = User.find(id)
+    @habits = Habit.all
+    erb :user_detail
+  else
+    erb :user_error
+  end
 end
 
 post '/users/:id/habits/new' do
@@ -200,6 +208,7 @@ post '/users/:id/habits/new' do
   habit.users.push(user)
   @habits = Habit.all
   @users = User.all()
+
   redirect "/user/#{user.id}"
 
 end
