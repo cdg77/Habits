@@ -9,9 +9,11 @@
 #Tyler', 'Change is not a four letter word… but often your reaction to it is! #JofferyBaratheon', 'Accept who you are, unless you are a serial killer #EllenDegeneres', 'Uuuuuuuuuuuuur Ahhhhhhrrrrrrr Uhrrrr Ahhhhrrrrrr Aaaaaargh #Chewie'] %>
 <% knowledgedisplay = knowledge.sample %>
 
-<div class="quote-display">
-<p><%= knowledgedisplay %></p>
-</div>
+  <blockquote class='center'>
+    <h2 class=''><%= knowledgedisplay %></h2>
+  </blockquote>
+  <div class="quote-display">
+  </div>
 
 <div class="col-md-5">
       <h2><%= @user.name %></h2>
