@@ -33,9 +33,14 @@ textarea{
   font-size: 200%
 }
 
+.textual {
+  float: center;
+}
+
 .article-container{
   float: left;
 }
+
 
 .option-color{
   color: black;

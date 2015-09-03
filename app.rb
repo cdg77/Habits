@@ -140,7 +140,7 @@ post '/habits/:id/users/new' do
   habit.users.push(user)
   @habits = Habit.all
   @users = User.all()
-  erb :habits
+  redirect "/habits/#{habit.id}"
 
 end
 

@@ -1,5 +1,6 @@
-<div class="container text-center col-md-3">
-  <div class="well">
+<div class="container text-center">
+  <div class="jumbotron">
+    <div class="container-fluid">
     <h1 id="heading" >Members</h1>
 
     <!-- list of habits that has a subset of users who are apart of that habit/links to forum/resources -->
@@ -9,12 +10,12 @@
     Ideally the reason for this is to link users who want to form the same habit all have a place to go-->
     <div class="textual">
         <h2><% @users.each do |user| %> </h2>
-
         <ul>
           <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
           <!-- add user total to end of link. call number of instances of habit id in join table. -->
         </ul>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
