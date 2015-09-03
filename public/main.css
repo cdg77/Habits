@@ -38,6 +38,9 @@ textarea{
   float: left;
 }
 
+.option-color{
+  color: black;
+}
 
 
 .travis .navbar-brand{
