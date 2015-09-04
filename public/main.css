@@ -17,6 +17,10 @@ body {
 
 }
 
+.habit_user{
+  display:flex;
+}
+
 .form-horizontal{
   width: 40%;
 }

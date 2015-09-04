@@ -279,6 +279,16 @@ get '/habits/:id' do
   erb :habit_detail
 
 end
+#
+# get '/messages/new' do
+#   id = params.fetch('id').to_i
+#   @habit = Habit.find(id)
+#   @users = User.all()
+#   id = params.fetch('id').to_i
+#   @habits = Habit.all()
+#   @messageboards = @habit.messageboards
+#   redirect"/habits/#{@habit.id}"
+# end
 
 post '/messages/new' do
   habit_id = params.fetch('habit_id').to_i
@@ -289,7 +299,5 @@ post '/messages/new' do
   @messageboards = Messageboard.all()
   @habit= habit.messageboards.push(@message)
   @habits=Habit.all()
-
-
-  erb :message
+  redirect"/habits/#{habit.id}"
 end
