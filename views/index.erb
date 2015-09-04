@@ -1,11 +1,10 @@
 <!-- <div class="container-fluid" -->
-
-
   <div class="quote">
     <div class="jumbotron">
       <h2>"Change might not be fast and isn't always easy. But with time and effort, almost any habit can be reshaped." -Charles Duhigg</h2>
     </div>
   </div>
+
   <div class="buttons-home center-block text-center">
     <% if session[:username] != nil %>
       <a href="/form_habits" class="btn btn-lg btn-primary">Form A Habit</a>
@@ -22,8 +21,8 @@
     <% else %>
       <form  class='horizontal' id="signup" action="/signup" method="post">
         <fieldset>
-            <legend>Sign Up Here</legend>
-            <!-- <label for="signup">Sign Up Here</label> -->
+          <legend class="text-info"><h2>Sign Up Here</h2></legend>
+          <!-- <label for="signup">Sign Up Here</label> -->
           <div class="form-group">
             <input type="text" name="name" placeholder="name">
           </div>
@@ -40,7 +39,7 @@
             <input type="text" name="phone" placeholder="phone">
           </div>
           <div class="form-group">
-            <label for="contact-yesno">show contact info</label>
+            <label for="contact-yesno"><h4 class="text-primary">show contact info</h4></label>
             <select id="contact" class="text-success" name="contact">
               <option value=true>Yes</option>
               <option value=false>No</option>
@@ -58,11 +57,11 @@
         </fieldset>
       </form>
 
-            <h3 class='text-warning'>or</h3>
+        <h2 class='text-info'>Already a member?</h2>
 
       <form  class='horizontal' id="login" action="/login" method="post">
         <fieldset>
-          <legend> Log In </legend>
+          <legend class="text-info"><h2>Log In</h2> </legend>
 
           <div>
             <div class="form-group">
