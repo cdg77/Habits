@@ -2,10 +2,7 @@
 
 ##### This app allows you to track and share habits that you are trying to establish or break... It also allows you to post tips and suggestions to the community.
 
-#### By _**Carlo De Gregorio**
-**Michael Bunker**
-**Travis Crampton**
-**Tyler Finley**
+#### By _**Michael Bunker, Travis Crampton, Carlo De Gregorio & Tyler Finley**_ 
 
 ## Description
 
